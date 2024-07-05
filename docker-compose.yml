@@ -1,0 +1,29 @@
+services:
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      POSTGRES_DB: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgresql"
+    restart: always
+    ports:
+      - 5555:5432
+
+  bot:
+    build:
+      context: \tg_bot
+    container_name: tgbot
+
+  app:
+    build:
+      context: .
+    container_name: app
+    restart: always
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+    links:
+      - db
