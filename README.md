@@ -13,3 +13,7 @@ docker compose up
 ```
 docker compose restart
 ```
+
+
+Бот телеграм
+@parsehhru_bot
